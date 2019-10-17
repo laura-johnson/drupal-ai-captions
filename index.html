@@ -33,25 +33,130 @@
 							<div class="logo logo--full"><span class="visually-hidden">Myplanet</span></div>
 						</div>
 						<div class="content">
-							<h1>Enter Your Title</h1>
+							<h1>I Think It’s a Kitten Wearing a Bowtie?</h1>
 							<div class="description">
-								This is where the description goes. Keep it short and sweet.
+								Drupal Media Image Caption Suggestions Using AI
 							</div>
 						</div>
 						<div class="credit">
 							<hr/>
 							<div class="label">Presented By</div>
-							<div class="name">Full Name</div>
-							<div class="role">Role</div>
+							<div class="name">Laura Johnson</div>
+							<div class="role">Senior Software Developer</div>
+							<div class="name">Boban Stanojevic</div>
+							<div class="role">Senior Software Developer</div>
 						</div>
 					</div>
 				</section>
-				<section class="subsection color--ice" id="subsection--ice">
+				<section id="blank">
+						<div class="grid-wrapper">
+							<div class="header">
+								<div class="logo"></div>
+								<div class="section">Intro</div>
+							</div>
+							<div class="content">
+									<h1>AI Image Captioning: How does it work?</h1>
+							</div>
+						</div>
+					</section>
+				<section id="deep-learning">
 					<div class="grid-wrapper">
-						<div class="logo"></div>
-						<h1>Enter Your Title</h1>
-						<div class="description">
-							This is where the description goes. Keep it short and sweet.
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section">Intro</div>
+						</div>
+						<div class="content">
+							<h1>An <em>encoder-decoder</em> neural network.</h1>
+							<p><strong>Encoder:</strong></p>
+							<ul>
+								<li>A deep convolutional neural network (CNN) called Inception V3</li>
+								<li>Pretrained using the ILSVRC-2012-CLS image classification dataset</li>
+							</ul>
+							<p><strong>Decoder:</strong></p>
+							<ul><li>A RNN (Recurrent Neural Network)</li>
+							<li>Also called along short-term memory (LSTM) network</li></ul>
+						</div>
+						<aside class="notes">
+								<ul>
+									<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification</li>
+									<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling and machine translation</li>
+									<li>In the Show and Tell model, the LSTM network is trained as a language model conditioned on the image encoding.</li>
+									<li>Words in the captions are represented with an embedding model. Each word in the vocabulary is associated with a fixed-length vector representation that is learned during training.</li>
+								</ul>
+							</aside>
+					</div>
+				</section>
+				<section id="rnn">
+						<div class="grid-wrapper">
+							<div class="header">
+								<div class="logo"></div>
+								<div class="section">Intro</div>
+							</div>
+							<div class="content">
+									<h1>Recurrent neural network</h1>
+									<img src="lib/images/machine-learning-rnn.gif">
+							</div>
+						</div>
+					</section>
+				<section id="blank">
+						<div class="grid-wrapper">
+							<div class="header">
+								<div class="logo"></div>
+								<div class="section">Intro</div>
+							</div>
+							<div class="content">
+								<h1>Why use AI image captions?</h1>
+								<ul>
+									<li>Accessibility</li>
+									<li>Compatibility with web standards</li>
+									<li>SEO</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				<section id="blank">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section">Intro</div>
+						</div>
+						<div class="content">
+								<h1>Why <em>not</em> use AI image captions?</h1>
+								<ul>
+									<li>Margin of error</li>
+									<li>If incorrect, can be misleading for visually impaired users</li>
+								</ul>
+						</div>
+					</div>
+				</section>
+				<section id="blank">
+						<div class="grid-wrapper">
+							<div class="header">
+								<div class="logo"></div>
+								<div class="section">Intro</div>
+							</div>
+							<div class="content">
+									<h1>Conclusion: use responsibly</h1>
+									<ul>
+										<li>Make it known to visually impaired users that there is a percentage of error</li>
+										<li>Prompt content creators to select or correct the captions</li>
+										<li>The technology is improving rapidly, the margin of error will decrease as models improve</li>
+									</ul>
+							</div>
+						</div>
+					</section>
+				<section id="blank">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section">Integrating with Drupal</div>
+						</div>
+						<div class="content">
+								<h1>Approach</h1>
+									<ul>
+										<li>Our demo uses an existing API provided by IBM</li>
+										<li>We use the model to pre-populate the alt field in the Media module</li>
+									</ul>
 						</div>
 					</div>
 				</section>
@@ -59,9 +164,42 @@
 					<div class="grid-wrapper">
 						<div class="header">
 							<div class="logo"></div>
-							<div class="section">Section</div>
+							<div class="section">Live Demo</div>
 						</div>
-						<div class="content">Content</div>
+						<div class="content"><h1>It's time for the live demo!</h1></div>
+					</div>
+				</section>
+				<section id="blank">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section">Code Walk-through</div>
+						</div>
+						<div class="content">Brief description here of the code involved and a link to the repo</div>
+					</div>
+				</section>
+				<section id="blank">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section"></div>
+						</div>
+						<div class="content">
+							<h1>Possible Improvements</h1>
+							<ul>
+									<li>Microsoft Accessibility Initiative</li>
+									<li>More applications within Drupal</li>
+								</ul>
+						</div>
+					</div>
+				</section>
+				<section id="blank">
+					<div class="grid-wrapper">
+						<div class="header">
+							<div class="logo"></div>
+							<div class="section">References</div>
+						</div>
+						<div class="content"><h1>References</h1></div>
 					</div>
 				</section>
 				<section class="quote color--midnight" id="quote--midnight">

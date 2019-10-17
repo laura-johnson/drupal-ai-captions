@@ -2,3 +2,8 @@
  * @file
  * Presentation-specific styles.
  */
+
+#rnn img {
+  width: 50%;
+  height: 50%;
+}
