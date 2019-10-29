@@ -45,6 +45,18 @@
 							<div class="name">Boban Stanojevic</div>
 							<div class="role">Senior Software Developers</div>
 						</div>
+						<aside class="notes">
+								<ul>
+										<li>Hi everyone and thanks for coming to our presentation on Image Caption Suggestions in Drupal using AI</li>
+										<li>To start off, we'll do brief introductions. I'm Laura Johnson and this is Boban Stanojevic. We're both senior software developers at Myplanet</li>
+										<li>Myplanet is a digital studio that specializes in smarter interfaces. We have a wide variety of clients and use a lot of different technologies including Drupal, AI implementations, custom JavaScript applications, mobile apps and more</li>
+										<li>I live in Toronto, Canada which is where Myplanet is located, and Boban lives in Serbia and is usually a remote team member.</li>
+										<li>One really cool thing about this talk is that this is the first time Boban and I have met in person after working together for almost two years.</li>
+										<li>So that is one of the really cool things about DrupalCon, is that it brings developers together from all over, including the ones you work with.</li>
+										<li>Okay, on to the presentation! I'm going to talk about the where, the what and the why associated with this topic, and then Boban is going to do a live demo</li>
+										<li>But first, the burning question: When you think about Image Caption Suggestions in Drupal using AI, one of the first questions you might ask yourself is, why? What's the use case for this?</li>
+									</ul>
+								</aside>
 					</div>
 				</section>
 				<section id="blank">
@@ -59,7 +71,7 @@
 								<li>To save time for authors and editors</li>
 								<li>Offer caption suggestions</li>
 								<li>For large archives of images that you don't have time to caption</li>
-								<li>A stronger prompt for authors to enter a proper caption</li>
+								<li>A prompt for content authors to enter a proper caption</li>
 							</ul>
 							<aside class="notes">
 								<p>There are all of the usual reasons for using image captions:</p>
@@ -68,6 +80,13 @@
 								<li>Compatibility with web standards</li>
 								<li>To display text if an image doesn't load</li>
 								<li>SEO</li>
+								<li>So we've established that image captions are important. But often we don't have them. Why not?</li>
+								<li>They're time consuming. As a developer, when I'm testing an image feature I almost only ever enter 'test' in the required alt field</li>
+								<li>I would like to think that as a content author I would put more thought into it, but we know we all take shortcuts</li>
+								<li>When was the last time you looked at a large number of uncaptioned images and thought I can't wait to caption all of these</li>
+								<li>In the same way that a required field is a prompt to enter something, a caption generator button is a prompt to enter a full description rather than a single word or something nonsensical</li>
+								<li>So, AI captioning does not mean that you don't have to worry about captioning anymore. You still have to pay attention and be an active participant. But it can be very helpful as an assistive tool.</li>
+								<li>Now I'm going to get into some of the nitty gritty details about the AI model we're using, because we think it's super interesting and fun to play with, and we think you will as well.</li>
 							</ul>
 						</aside>
 						</div>
@@ -87,16 +106,14 @@
 											<li>Developed by research scientists at Google</li>
 											<li>Implemented with Tensorflow</li>
 										</ul>
-										<img src="lib/images/show_and_tell_architecture.png">
 								<aside class="notes">
 										<ul>
-												<li>Inspired by experiments in language translation</li>
-												<li>For language, a RNN was used to generate a rich vector from a sentence</li>
+											<li>As Boban will explain a little later, it is very possible for any one of us to train our own model and to fine tune it ourselves using Tensorflow and other tools.</li>
+											<li>For the purposes of this demo, we wanted to really concentrate on the integration of the API with Drupal, so we chose to use a pre-existing API and pre-trained model.</li>
+											<li>So we used an API that is provided by IBM as part of a suite of AI tools that they have published. We have a link to it in the resources section of this slide deck, which we have published if you want to check it out</li>
+												<li>Inspired by experiments that Google conducted into language translation using an encoder-decoder type of model</li>
+												<li>In that version, a Recurrent Neural Network was the encoder, and it was used to generate a rich vector from a sentence</li>
 												<li>Another RNN was used as a decoder to generate the target sentence</li>
-												<li>To work for image 'translation', a deep CNN is used to generate a rich vector from the image</li>
-												<li>A Deep Convolutional Neural Network is an algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.</li>
-												<li>In the Show and Tell model, a single trainable layer is added on top of the Inception v3 model to transform the image embedding into the word embedding vector space.</li>
-												<li>The last hidden layer of the generated vector is passed as input to the RNN decoder</li>
 											</ul>
 									</aside>
 							</div>
@@ -120,10 +137,11 @@
 								</div>
 								<aside class="notes">
 										<ul>
-											<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification</li>
-											<li>When we say ‘deep’, or ‘deep learning’ in reference to a CNN or to any machine learning, it means that there are successive layers that data is passed through that transform the data before it is finally output.</li>
+											<li>To work for image 'translation', they replaced the encoder RNN with a Deep Convolutional Neural Network</li>
+											<li>They 'encode' the image into a vector, and 'decode' it into a sentence.</li>
+											<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification and are currently considered to be state-of-the-art</li>
 											<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling and machine translation</li>
-											<li>In the Show and Tell model, the LSTM network is trained as a language model conditioned on the image encoding.</li>
+											<li>When we say ‘deep’, or ‘deep learning’ in reference to a CNN or to any machine learning, it means that there are successive layers that data is passed through that transform the data before it is finally output.</li>
 										</ul>
 									</aside>
 							</div>
@@ -136,11 +154,15 @@
 									</div>
 									<div class="content">
 											<h2>Deep convolutional neural network</h2>
+											<ul>
+													<li>The DCNN reduces the images into a form which is easier to process</li>
+													<li>This image represents convolution in just one layer, but there may be several layers</li>
+												</ul>
 											<img src="lib/images/convolution2.gif">
-											<img src="lib/images/convolution.gif">
 									</div>
 									<aside class="notes">
 											<ul>
+												<li>A Deep Convolutional Neural Network is an algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.</li>
 												<li>The role of the DCNN is to reduce the images into a form which is easier to process, without losing features which are critical for getting a good prediction.</li>
 												<li>In this image we see a filter, also called a ‘Kernel’, moving across an image. Every time it moves, it performs a matrix multiplication operation. The result is a convoluted feature. </li>
 												<li>The first convolution layer is responsible for capturing the low-level features such as edges, color, gradient orientation, etc. With each successive layer, the architecture adapts to the High-Level features as well, giving us a network which has a fairly comprehensive understanding of images in the dataset, similar to how humans would understand it.</li>
@@ -157,7 +179,12 @@
 							</div>
 							<div class="content">
 									<h2>Recurrent neural network</h2>
-									<img src="lib/images/machine-learning-rnn.gif">
+									<ul>
+											<li>Captions are generated word-by-word</li>
+											<li>Beam Search selects captions for the image, keeping only the top k candidates at each step</li>
+											<li>They have found the best performance with a beam size of k = 3</li>
+										</ul>
+									<img src="lib/images/show_and_tell_architecture.png">
 							</div>
 							<aside class="notes">
 									<ul>
@@ -165,28 +192,38 @@
 										<li>Captions are generated word-by-word</li>
 										<li>In a recurrent neural network, the output of each successive layer is passed back into the hidden state of the next layer.</li>
 										<li>At each step the set of sentences already generated is used to generate a new set of sentences.</li>
-										<li>Given a trained model and an image we use beam search to generate captions for that image.</li>
+										<li>They use beam search to select captions for the image.</li>
 										<li>They keep only the top k candidates at each step, where the hyperparameter k is called the beam size.</li>
 										<li>They have found the best performance with a beam size of k = 3, and you will see that this model returns three results to us.</li>
 									</ul>
 								</aside>
 						</div>
 					</section>
-					<section id="blank">
+					<section id="dataset">
 							<div class="grid-wrapper">
 								<div class="header">
 									<div class="logo"></div>
 									<div class="section">Intro</div>
 								</div>
 								<div class="content">
-										<h1>The Dataset</h1>
+										<h2>The Dataset</h2>
 										<ul>
-											<li>Different datasets will give you drastically different results</li>
-											<li>The one that our model is trained on is fairly generic</li>
-											<li>Some datasets are tailored to specific tasks, such as clothing classification</li>
-											<li>Microsoft is developing a dataset specifically designed to benefit vision impaired users</li>
-										</ul>
+												<li>Different datasets will give you drastically different results</li>
+												<li>The one that our model is trained on is fairly generic</li>
+												<li>Microsoft Accessibility Initiative</li>
+											</ul>
+											<img src="lib/images/example_captions.jpg">
 								</div>
+								<aside class="notes">
+										<ul>
+												<li>The dataset that you use to train the algorithm is critical.</li>
+												<li>Different datasets will give you drastically different results</li>
+												<li>The one that our model is trained on is fairly generic</li>
+												<li>Some datasets are tailored to specific tasks, such as clothing recognition and classification</li>
+												<li>Microsoft has a program called the Microsoft Accessibility Initiative which is dedicated to developing a dataset specifically designed to benefit vision impaired users</li>
+												<li>That I believe will be very useful both on its own and as information for anyone creating a dataset on what makes it most effective for visually impaired users.</li>
+											</ul>
+								</aside>
 							</div>
 						</section>
 				<section id="accessibility">
@@ -198,14 +235,22 @@
 						<div class="content">
 								<h1>Why <em>not</em> use AI image captions?</h1>
 								<ul>
-									<li>AI captions are sometimes wrong</li>
+									<li>AI captions are sometimes wrong <br>(very, very wrong)</li>
 									<li>If incorrect, can be misleading for visually impaired users</li>
-									<li>From an SEO standpoint it is somewhat important that captions be accurate</li>
-									<li>Google 'CaptionBot fails' for more examples</li>
 									<li>Captions should ideally convey the intent of the author</li>
 								</ul>
 								<img src="lib/images/captionbot.jpg">
 						</div>
+						<aside class="notes">
+						<ul>
+								<li>AI captions are sometimes wrong</li>
+								<li>If incorrect, can be misleading for visually impaired users</li>
+								<li>From an SEO standpoint it is somewhat important that captions be accurate</li>
+								<li>Google 'CaptionBot fails' for more examples</li>
+								<li>Captions should ideally convey the intent of the author</li>
+								<li>An improvement that will come at some point is that ML will be able to include the text surrounding an image and include that as input to construct more accurate captions. But we're not there yet.</li>
+							</ul>
+						</aside>
 					</div>
 				</section>
 				<section id="blank">

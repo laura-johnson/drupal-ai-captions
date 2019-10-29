@@ -6,7 +6,8 @@
 #rnn img, #cnn img {
   width: 45%;
   height: 45%;
-  vertical-align: top;
+  vertical-align: top;  
+  margin-left: 15px;
 }
 
 #show-tell img {
@@ -16,7 +17,14 @@
   margin-left: 15px;
 }
 
-#accessibility ul {
+#dataset img, #accessibility img {
+  width: 35%;
+  height: 35%;
+  vertical-align: top;
+  margin-left: 15px;
+}
+
+#accessibility ul, #rnn ul, #cnn ul {
   vertical-align: top;
   width: 40%;
 }
