@@ -48,43 +48,107 @@
 					</div>
 				</section>
 				<section id="blank">
-						<div class="grid-wrapper">
-							<div class="header">
-								<div class="logo"></div>
-								<div class="section">Intro</div>
-							</div>
-							<div class="content">
-									<h1>AI Image Captioning: How does it work?</h1>
-							</div>
-						</div>
-					</section>
-				<section id="deep-learning">
 					<div class="grid-wrapper">
 						<div class="header">
 							<div class="logo"></div>
 							<div class="section">Intro</div>
 						</div>
 						<div class="content">
-							<h1>An <em>encoder-decoder</em> neural network.</h1>
-							<p><strong>Encoder:</strong></p>
+							<h1>Why use AI image captions in a CMS?</h1>
 							<ul>
-								<li>A deep convolutional neural network (CNN) called Inception V3</li>
-								<li>Pretrained using the ILSVRC-2012-CLS image classification dataset</li>
+								<li>To save time for authors and editors</li>
+								<li>Offer caption suggestions</li>
+								<li>For large archives of images that you don't have time to caption</li>
+								<li>A stronger prompt for authors to enter a proper caption</li>
 							</ul>
-							<p><strong>Decoder:</strong></p>
-							<ul><li>A RNN (Recurrent Neural Network)</li>
-							<li>Also called along short-term memory (LSTM) network</li></ul>
+							<aside class="notes">
+								<p>There are all of the usual reasons for using image captions:</p>
+							<ul>
+								<li>Accessibility</li>
+								<li>Compatibility with web standards</li>
+								<li>To display text if an image doesn't load</li>
+								<li>SEO</li>
+							</ul>
+						</aside>
 						</div>
-						<aside class="notes">
-								<ul>
-									<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification</li>
-									<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling and machine translation</li>
-									<li>In the Show and Tell model, the LSTM network is trained as a language model conditioned on the image encoding.</li>
-									<li>Words in the captions are represented with an embedding model. Each word in the vocabulary is associated with a fixed-length vector representation that is learned during training.</li>
-								</ul>
-							</aside>
 					</div>
 				</section>
+				<section id="show-tell">
+						<div class="grid-wrapper">
+							<div class="header">
+								<div class="logo"></div>
+								<div class="section">Intro</div>
+							</div>
+							<div class="content">
+									<h1>Background about the AI model</h1>
+									<ul> 
+											<li>API provided by IBM</li>
+											<li>Based on a model called the <em>Show and Tell Model</em></li>
+											<li>Developed by research scientists at Google</li>
+											<li>Implemented with Tensorflow</li>
+										</ul>
+										<img src="lib/images/show_and_tell_architecture.png">
+								<aside class="notes">
+										<ul>
+												<li>Inspired by experiments in language translation</li>
+												<li>For language, a RNN was used to generate a rich vector from a sentence</li>
+												<li>Another RNN was used as a decoder to generate the target sentence</li>
+												<li>To work for image 'translation', a deep CNN is used to generate a rich vector from the image</li>
+												<li>A Deep Convolutional Neural Network is an algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.</li>
+												<li>In the Show and Tell model, a single trainable layer is added on top of the Inception v3 model to transform the image embedding into the word embedding vector space.</li>
+												<li>The last hidden layer of the generated vector is passed as input to the RNN decoder</li>
+											</ul>
+									</aside>
+							</div>
+						</section>
+					<section id="deep-learning">
+							<div class="grid-wrapper">
+								<div class="header">
+									<div class="logo"></div>
+									<div class="section">Intro</div>
+								</div>
+								<div class="content">
+									<h1>An <em>encoder-decoder</em> neural network.</h1>
+									<p><strong>Encoder:</strong></p>
+									<ul>
+										<li>A deep convolutional neural network (DCNN) called Inception V3</li>
+										<li>Pretrained using the ILSVRC-2012-CLS image classification dataset</li>
+									</ul>
+									<p><strong>Decoder:</strong></p>
+									<ul><li>A RNN (Recurrent Neural Network)</li>
+									<li>Also called along short-term memory (LSTM) network</li></ul>
+								</div>
+								<aside class="notes">
+										<ul>
+											<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification</li>
+											<li>When we say ‘deep’, or ‘deep learning’ in reference to a CNN or to any machine learning, it means that there are successive layers that data is passed through that transform the data before it is finally output.</li>
+											<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling and machine translation</li>
+											<li>In the Show and Tell model, the LSTM network is trained as a language model conditioned on the image encoding.</li>
+										</ul>
+									</aside>
+							</div>
+						</section>
+						<section id="cnn">
+								<div class="grid-wrapper">
+									<div class="header">
+										<div class="logo"></div>
+										<div class="section">Intro</div>
+									</div>
+									<div class="content">
+											<h2>Deep convolutional neural network</h2>
+											<img src="lib/images/convolution2.gif">
+											<img src="lib/images/convolution.gif">
+									</div>
+									<aside class="notes">
+											<ul>
+												<li>The role of the DCNN is to reduce the images into a form which is easier to process, without losing features which are critical for getting a good prediction.</li>
+												<li>In this image we see a filter, also called a ‘Kernel’, moving across an image. Every time it moves, it performs a matrix multiplication operation. The result is a convoluted feature. </li>
+												<li>The first convolution layer is responsible for capturing the low-level features such as edges, color, gradient orientation, etc. With each successive layer, the architecture adapts to the High-Level features as well, giving us a network which has a fairly comprehensive understanding of images in the dataset, similar to how humans would understand it.</li>
+												<li>This architecture is analogous to that of the connectivity pattern of Neurons in the Human Brain and was inspired by the organization of the Visual Cortex. Individual neurons respond to stimuli only in a restricted region of the visual field known as the Receptive Field. A collection of such fields overlap to cover the entire visual area.</li>
+											</ul>
+										</aside>
+								</div>
+							</section>
 				<section id="rnn">
 						<div class="grid-wrapper">
 							<div class="header">
@@ -92,28 +156,40 @@
 								<div class="section">Intro</div>
 							</div>
 							<div class="content">
-									<h1>Recurrent neural network</h1>
+									<h2>Recurrent neural network</h2>
 									<img src="lib/images/machine-learning-rnn.gif">
 							</div>
+							<aside class="notes">
+									<ul>
+										<li>The decoder takes the vector that is produced by the CNN and using the weights and categorizations, generates captions.</li>
+										<li>Captions are generated word-by-word</li>
+										<li>In a recurrent neural network, the output of each successive layer is passed back into the hidden state of the next layer.</li>
+										<li>At each step the set of sentences already generated is used to generate a new set of sentences.</li>
+										<li>Given a trained model and an image we use beam search to generate captions for that image.</li>
+										<li>They keep only the top k candidates at each step, where the hyperparameter k is called the beam size.</li>
+										<li>They have found the best performance with a beam size of k = 3, and you will see that this model returns three results to us.</li>
+									</ul>
+								</aside>
 						</div>
 					</section>
-				<section id="blank">
-						<div class="grid-wrapper">
-							<div class="header">
-								<div class="logo"></div>
-								<div class="section">Intro</div>
+					<section id="blank">
+							<div class="grid-wrapper">
+								<div class="header">
+									<div class="logo"></div>
+									<div class="section">Intro</div>
+								</div>
+								<div class="content">
+										<h1>The Dataset</h1>
+										<ul>
+											<li>Different datasets will give you drastically different results</li>
+											<li>The one that our model is trained on is fairly generic</li>
+											<li>Some datasets are tailored to specific tasks, such as clothing classification</li>
+											<li>Microsoft is developing a dataset specifically designed to benefit vision impaired users</li>
+										</ul>
+								</div>
 							</div>
-							<div class="content">
-								<h1>Why use AI image captions?</h1>
-								<ul>
-									<li>Accessibility</li>
-									<li>Compatibility with web standards</li>
-									<li>SEO</li>
-								</ul>
-							</div>
-						</div>
-					</section>
-				<section id="blank">
+						</section>
+				<section id="accessibility">
 					<div class="grid-wrapper">
 						<div class="header">
 							<div class="logo"></div>
@@ -122,9 +198,13 @@
 						<div class="content">
 								<h1>Why <em>not</em> use AI image captions?</h1>
 								<ul>
-									<li>Margin of error</li>
+									<li>AI captions are sometimes wrong</li>
 									<li>If incorrect, can be misleading for visually impaired users</li>
+									<li>From an SEO standpoint it is somewhat important that captions be accurate</li>
+									<li>Google 'CaptionBot fails' for more examples</li>
+									<li>Captions should ideally convey the intent of the author</li>
 								</ul>
+								<img src="lib/images/captionbot.jpg">
 						</div>
 					</div>
 				</section>
@@ -137,28 +217,15 @@
 							<div class="content">
 									<h1>Conclusion: use responsibly</h1>
 									<ul>
+										<li>Implement as an assistive tool rather than as the default</li>
 										<li>Make it known to visually impaired users that there is a percentage of error</li>
+										<li>Studies have shown that visually impaired users tend to trust the captions</li>
 										<li>Prompt content creators to select or correct the captions</li>
 										<li>The technology is improving rapidly, the margin of error will decrease as models improve</li>
 									</ul>
 							</div>
 						</div>
 					</section>
-				<section id="blank">
-					<div class="grid-wrapper">
-						<div class="header">
-							<div class="logo"></div>
-							<div class="section">Integrating with Drupal</div>
-						</div>
-						<div class="content">
-								<h1>Approach</h1>
-									<ul>
-										<li>Our demo uses an existing API provided by IBM</li>
-										<li>We use the model to pre-populate the alt field in the Media module</li>
-									</ul>
-						</div>
-					</div>
-				</section>
 				<section id="blank">
 					<div class="grid-wrapper">
 						<div class="header">
