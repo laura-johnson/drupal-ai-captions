@@ -72,6 +72,7 @@
 								<li>Offer caption suggestions</li>
 								<li>For large archives of images that you don't have time to caption</li>
 								<li>A prompt for content authors to enter a proper caption</li>
+								<li>As an educational tool that describes what types of captions are best for screen reader users</li>
 							</ul>
 							<aside class="notes">
 								<p>There are all of the usual reasons for using image captions:</p>
@@ -111,9 +112,9 @@
 											<li>As Boban will explain a little later, it is very possible for any one of us to train our own model and to fine tune it ourselves using Tensorflow and other tools.</li>
 											<li>For the purposes of this demo, we wanted to really concentrate on the integration of the API with Drupal, so we chose to use a pre-existing API and pre-trained model.</li>
 											<li>So we used an API that is provided by IBM as part of a suite of AI tools that they have published. We have a link to it in the resources section of this slide deck, which we have published if you want to check it out</li>
-												<li>Inspired by experiments that Google conducted into language translation using an encoder-decoder type of model</li>
-												<li>In that version, a Recurrent Neural Network was the encoder, and it was used to generate a rich vector from a sentence</li>
-												<li>Another RNN was used as a decoder to generate the target sentence</li>
+											<li>Inspired by experiments that Google conducted into language translation using an encoder-decoder type of model</li>
+											<li>In that version, a Recurrent Neural Network was the encoder, and it was used to generate a rich vector from a sentence</li>
+											<li>Another RNN was used as a decoder to generate the target sentence</li>
 											</ul>
 									</aside>
 							</div>
@@ -139,8 +140,8 @@
 										<ul>
 											<li>To work for image 'translation', they replaced the encoder RNN with a Deep Convolutional Neural Network</li>
 											<li>They 'encode' the image into a vector, and 'decode' it into a sentence.</li>
-											<li>The Inception models are types of Convolutional Neural Networks designed by google mainly for image classification and are currently considered to be state-of-the-art</li>
-											<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling and machine translation</li>
+											<li>The Inception models are types of Convolutional Neural Networks designed by Google mainly for image classification and are currently considered to be state-of-the-art</li>
+											<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling</li>
 											<li>When we say ‘deep’, or ‘deep learning’ in reference to a CNN or to any machine learning, it means that there are successive layers that data is passed through that transform the data before it is finally output.</li>
 										</ul>
 									</aside>
@@ -220,7 +221,9 @@
 												<li>Different datasets will give you drastically different results</li>
 												<li>The one that our model is trained on is fairly generic</li>
 												<li>Some datasets are tailored to specific tasks, such as clothing recognition and classification</li>
-												<li>Microsoft has a program called the Microsoft Accessibility Initiative which is dedicated to developing a dataset specifically designed to benefit vision impaired users</li>
+												<li>Microsoft has a program called the Microsoft Ability Initiative which is dedicated to developing a dataset specifically designed to benefit vision impaired users</li>
+												<li>It incorporates research on how end-users who are blind interpret the output of AI image labeling systems and the type of information that is missing from AI generated descriptions</li>
+												<li>It also incorporates research on how to incorporate more than just textual information - the alt attribute can potentially be multimedia, interactive, multi-dimensional</li>
 												<li>That I believe will be very useful both on its own and as information for anyone creating a dataset on what makes it most effective for visually impaired users.</li>
 											</ul>
 								</aside>
@@ -315,7 +318,7 @@
 							<p><strong>IBM MAX Image Caption Generator:</strong> https://github.com/IBM/MAX-Image-Caption-Generator/</p>
 							<p><strong>IBM Max Image Caption Generator Homepage:</strong> https://developer.ibm.com/exchanges/models/all/max-image-caption-generator/</p>
 							<p><strong>Link to the project:</strong> https://github.com/myplanetdigital/drupal-ai-image-captions</p>
-							<p><strong>Microsoft Accessibility Initiative:</strong> </p>
+							<p><strong>Microsoft Ability Initiative:</strong> </p>
 								<ul>
 										<li>https://www.microsoft.com/en-us/research/blog/microsoft-ability-initiative-a-collaborative-quest-to-innovate-in-image-captioning-for-people-who-are-blind-or-with-low-vision/</li>
 										<li>https://www.microsoft.com/en-us/research/uploads/prod/2018/01/images_chi_two_appendices.pdf</li>
