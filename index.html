@@ -113,7 +113,7 @@
 											<li>For the purposes of this demo, we wanted to really concentrate on the integration of the API with Drupal, so we chose to use a pre-existing API and pre-trained model.</li>
 											<li>So we used an API that is provided by IBM as part of a suite of AI tools that they have published. We have a link to it in the resources section of this slide deck, which we have published if you want to check it out</li>
 											<li>Inspired by experiments that Google conducted into language translation using an encoder-decoder type of model</li>
-											<li>In that version, a Recurrent Neural Network was the encoder, and it was used to generate a rich vector from a sentence</li>
+											<li>In that version, the encoder was encoding a sentence</li>
 											<li>Another RNN was used as a decoder to generate the target sentence</li>
 											</ul>
 									</aside>
@@ -138,8 +138,9 @@
 								</div>
 								<aside class="notes">
 										<ul>
-											<li>To work for image 'translation', they replaced the encoder RNN with a Deep Convolutional Neural Network</li>
-											<li>They 'encode' the image into a vector, and 'decode' it into a sentence.</li>
+											<li>So they decided to try to make it work for image 'translation'</li>
+											<li>They replaced the encoder RNN with a Deep Convolutional Neural Network</li>
+											<li>The model 'encodes' the image into a vector, and 'decodes' it into a sentence.</li>
 											<li>The Inception models are types of Convolutional Neural Networks designed by Google mainly for image classification and are currently considered to be state-of-the-art</li>
 											<li>LSTM networks are commonly used for sequence modeling tasks such as language modeling</li>
 											<li>When we say ‘deep’, or ‘deep learning’ in reference to a CNN or to any machine learning, it means that there are successive layers that data is passed through that transform the data before it is finally output.</li>
@@ -163,11 +164,11 @@
 									</div>
 									<aside class="notes">
 											<ul>
-												<li>A Deep Convolutional Neural Network is an algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other.</li>
+												<li>A Deep Convolutional Neural Network is an algorithm which can take in an input image and assign importance or weight to various aspects/objects in the image.</li>
 												<li>The role of the DCNN is to reduce the images into a form which is easier to process, without losing features which are critical for getting a good prediction.</li>
-												<li>In this image we see a filter, also called a ‘Kernel’, moving across an image. Every time it moves, it performs a matrix multiplication operation. The result is a convoluted feature. </li>
-												<li>The first convolution layer is responsible for capturing the low-level features such as edges, color, gradient orientation, etc. With each successive layer, the architecture adapts to the High-Level features as well, giving us a network which has a fairly comprehensive understanding of images in the dataset, similar to how humans would understand it.</li>
-												<li>This architecture is analogous to that of the connectivity pattern of Neurons in the Human Brain and was inspired by the organization of the Visual Cortex. Individual neurons respond to stimuli only in a restricted region of the visual field known as the Receptive Field. A collection of such fields overlap to cover the entire visual area.</li>
+												<li>In this image we see a filter, also called a ‘Kernel’, moving across an image.</li>
+												<li>The first convolution layer is responsible for capturing the low-level features such as edges and color. With each successive layer, the kernel captures more high-level features as well.</li>
+												<li>This architecture is inspired by the organization of the Visual Cortex in humans.</li>
 											</ul>
 										</aside>
 								</div>
@@ -189,11 +190,9 @@
 							</div>
 							<aside class="notes">
 									<ul>
-										<li>The decoder takes the vector that is produced by the CNN and using the weights and categorizations, generates captions.</li>
 										<li>Captions are generated word-by-word</li>
-										<li>In a recurrent neural network, the output of each successive layer is passed back into the hidden state of the next layer.</li>
-										<li>At each step the set of sentences already generated is used to generate a new set of sentences.</li>
-										<li>They use beam search to select captions for the image.</li>
+										<li>A number of captions are generated for a single image.</li>
+										<li>The model uses beam search to select the most probable captions for the image.</li>
 										<li>They keep only the top k candidates at each step, where the hyperparameter k is called the beam size.</li>
 										<li>They have found the best performance with a beam size of k = 3, and you will see that this model returns three results to us.</li>
 									</ul>
@@ -217,12 +216,11 @@
 								</div>
 								<aside class="notes">
 										<ul>
-												<li>The dataset that you use to train the algorithm is critical.</li>
 												<li>Different datasets will give you drastically different results</li>
-												<li>The one that our model is trained on is fairly generic</li>
-												<li>Some datasets are tailored to specific tasks, such as clothing recognition and classification</li>
+												<li>There are datasets that are publicly available. The one that our model is trained on is publicly available and fairly generic</li>
+												<li>Some datasets are tailored to specific subjects, such as clothing recognition and classification</li>
 												<li>Microsoft has a program called the Microsoft Ability Initiative which is dedicated to developing a dataset specifically designed to benefit vision impaired users</li>
-												<li>It incorporates research on how end-users who are blind interpret the output of AI image labeling systems and the type of information that is missing from AI generated descriptions</li>
+												<li>It incorporates research on how end-users who are blind interpret the output of AI image labeling systems</li>
 												<li>It also incorporates research on how to incorporate more than just textual information - the alt attribute can potentially be multimedia, interactive, multi-dimensional</li>
 												<li>That I believe will be very useful both on its own and as information for anyone creating a dataset on what makes it most effective for visually impaired users.</li>
 											</ul>
